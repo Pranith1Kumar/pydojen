@@ -1,0 +1,5 @@
+Local workstation
+git
+github
+docker
+jenkins
