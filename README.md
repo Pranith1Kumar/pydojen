@@ -6,6 +6,10 @@ The aim of this project is to develop a simple Flask web application, containeri
 
 
 
+[Watch the Video](https://github.com/Pranith1Kumar/pydojen/blob/a73e7ce5480ba27e595066d2af8350c2a938a5ea/pydojen.drawio.png)
+
+
+
 # Git, Docker, and Jenkins: A Guide
 
 This repository provides an overview of **Git**, **Docker**, and **Jenkins**, essential tools for modern software development workflows. By leveraging these tools, developers can effectively manage source code, deploy applications, and automate software delivery processes.
@@ -212,8 +216,9 @@ Additionally, basic knowledge of Python, Docker, and Jenkins is required.
    
 2. Initialize a Git repository:
 
-  ```bash
-  git init```
+```bash
+  git init
+```
 
 3. Create a virtual environment and activate it:
 
@@ -381,23 +386,23 @@ git push -u origin master
 
 
 
-## Jenkins plays a crucial role in automating the Continuous Integration (CI) and Continuous Deployment (CD) processes for your project. Here's an explanation of Jenkins' role in this setup:
+Jenkins plays a crucial role in automating the Continuous Integration (CI) and Continuous Deployment (CD) processes for your project. Here's an explanation of Jenkins' role in this setup:
 
 1. Role of Jenkins:
-# Continuous Integration (CI):
+ Continuous Integration (CI):
 
 Automating Builds: Jenkins automates the process of building your application. When you push changes to your GitHub repository, Jenkins can automatically detect these changes and trigger a new build. This ensures that your application is always up-to-date and that any errors introduced by new code are detected early.
 Running Tests: Jenkins can run automated tests as part of the build process. This helps to ensure that your code changes do not introduce new bugs or break existing functionality.
 
-# Continuous Deployment (CD):
+ Continuous Deployment (CD):
 
 Deploying Applications: Jenkins can automate the deployment of your application to different environments (e.g., development, staging, production). In this project, Jenkins will build a Docker image of your Python application and run the Docker container, ensuring that your application is deployed consistently and reliably.
 Pipeline Management: Jenkins allows you to define and manage complex deployment pipelines. You can specify multiple stages (e.g., build, test, deploy) and configure them to run sequentially or in parallel.
 Integration with Version Control:
 
-# Source Code Management: By integrating with GitHub, Jenkins can automatically fetch the latest code from your repository. This integration ensures that Jenkins always has access to the most recent version of your codebase.
+ Source Code Management: By integrating with GitHub, Jenkins can automatically fetch the latest code from your repository. This integration ensures that Jenkins always has access to the most recent version of your codebase.
 
-# Build Triggers:
+ Build Triggers:
 
 GitHub Hook Trigger: By enabling the "GitHub hook trigger for GITScm polling," you allow Jenkins to listen for webhooks from GitHub. This means that whenever you push changes to your repository, GitHub will notify Jenkins, and Jenkins will trigger a new build. This setup ensures that your CI/CD pipeline is automatically started whenever changes are made to the codebase.
 
@@ -429,7 +434,7 @@ Work Flow:
                                          | Deployment Server|
                                          |  - Docker        |
                                          +------------------+
-## You have successfully:
+ You have successfully:
 
 - Built a Python web application using Flask.
 - Containerized the application with Docker.
