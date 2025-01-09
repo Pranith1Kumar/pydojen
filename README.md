@@ -6,7 +6,10 @@ The aim of this project is to develop a simple Flask web application, containeri
 
 
 
-[Watch the Video](https://github.com/Pranith1Kumar/pydojen/blob/a73e7ce5480ba27e595066d2af8350c2a938a5ea/pydojen.drawio.png)
+![Project Workflow](https://github.com/Pranith1Kumar/pydojen/blob/a73e7ce5480ba27e595066d2af8350c2a938a5ea/pydojen.drawio.png)
+
+[![Project_WorkFlow_ Video]([https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg](https://github.com/Pranith1Kumar/pydojen/blob/0f8d0d66b71a8ccf4f50c614d132377cb2e05ca5/pydojen.mp4))]([https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://github.com/Pranith1Kumar/pydojen/blob/0f8d0d66b71a8ccf4f50c614d132377cb2e05ca5/pydojen.mp4))
+
 
 
 
