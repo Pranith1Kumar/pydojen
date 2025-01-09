@@ -150,6 +150,7 @@ t give the secreat password which intially created by Jenkins by default.
 - Your Jenkins setup on Windows using Docker is now complete! 🎉
 
 
+```
 Project directory structure
 python-docker-jenkins/
 ├── app.py
@@ -164,6 +165,8 @@ python-docker-jenkins/
 │   └── test_app.py
 ├── .gitignore
 └── Jenkinsfile
+```
+
 
 
 - Create a `.gitignore` file in directory
