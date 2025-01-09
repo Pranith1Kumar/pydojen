@@ -1,4 +1,9 @@
-# pydojen
+# pydojen is a repo containing the intermediate project using Docker, Git and Jenkins
+# **Continuous Integration and Deployment of a Flask Web Application using Docker and Jenkins**
+
+## Aim:
+The aim of this project is to develop a simple Flask web application, containerize it using Docker, and automate its continuous integration and deployment (CI/CD) pipeline using Jenkins. The project will utilize Git for version control to track changes and collaborate efficiently.
+
 
 
 # Git, Docker, and Jenkins: A Guide
@@ -74,41 +79,41 @@ By mastering **Git**, **Docker**, and **Jenkins**, you can create a robust and a
 
 
 Prerequities before strating this project
-1. Install Docker Desktop on Windows from `https://www.docker.com/products/docker-desktop/` choose based on your OS.
+1. Install Docker Desktop on Windows from ```https://www.docker.com/products/docker-desktop/``` choose based on your OS.
 - Download Docker Desktop from Docker's official site.
 - Install Docker Desktop by following the on-screen instructions.
-After installation, ensure Docker is running (`docker --version`).
+After installation, ensure Docker is running (```docker --version```).
 
 2. Pull the Jenkins Docker Image
 - Open a Command Prompt or PowerShell.
 - Run the following command to pull the official Jenkins LTS image:
 
-`bash
+```bash
 docker pull jenkins/jenkins:lts
-`
+```
 
 3. Create a Docker Volume for Jenkins
 - Create a Docker volume to persist Jenkins data:
 
-`bash
+```bash
 docker volume create jenkins-data
-`
+```
 
 4. Run the Jenkins Container
 - Use the following command to run Jenkins:
 
-`bash
+```bash
 docker run -d --name jenkins \
    -p 8080:8080 -p 50000:50000 \
    -v jenkins-data:/var/jenkins_home \
    -v /var/run/docker.sock:/var/run/docker.sock \
    jenkins/jenkins:lts
-`
+```
 
--p 8080:8080: Maps port 8080 of the container to port 8080 on your machine (Web UI).
--p 50000:50000: Maps port 50000 for Jenkins agents.
--v jenkins-data:/var/jenkins_home: Mounts the Docker volume for Jenkins data.
--v /var/run/docker.sock:/var/run/docker.sock: Allows Jenkins to interact with Docker.
+- p 8080:8080: Maps port 8080 of the container to port 8080 on your machine (Web UI).
+- p 50000:50000: Maps port 50000 for Jenkins agents.
+- v jenkins-data:/var/jenkins_home: Mounts the Docker volume for Jenkins data.
+- v /var/run/docker.sock:/var/run/docker.sock: Allows Jenkins to interact with Docker.
 
 
 5. Access Jenkins UI
@@ -136,6 +141,39 @@ t give the secreat password which intially created by Jenkins by default.
 8. Verify Installation
 - Test Jenkins by creating and running a basic pipeline or freestyle job.
 - Your Jenkins setup on Windows using Docker is now complete! 🎉
+
+
+Project directory structure
+python-docker-jenkins/
+├── app.py
+├── Dockerfile
+├── requirements.txt
+├── venv/
+│   ├── Include/
+│   ├── Lib/
+│   ├── Scripts/ (or bin/ on Unix-like systems)
+│   └── ...
+├── tests/
+│   └── test_app.py
+├── .gitignore
+└── Jenkinsfile
+
+
+- Create a `.gitignore` file in directory
+
+```venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+dist/
+*.egg-info/
+*.log
+*.sqlite3
+```
 
 
 # Python Web Application with CI/CD Using Jenkins and Docker
@@ -174,20 +212,43 @@ Additionally, basic knowledge of Python, Docker, and Jenkins is required.
    
 2. Initialize a Git repository:
 
-  `bash
-  git init`
+  ```bash
+  git init```
 
 3. Create a virtual environment and activate it:
 
-`bash
+```bash
   python3 -m venv venv
-  source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-`
+  source venv/bin/activate  
+```
+# On Windows, use venv\Scripts\activate
+- Open PowerShell as Administrator:
+
+- Right-click on the PowerShell icon and select "Run as administrator".
+- Set the Execution Policy:
+
+- To allow the execution of scripts, you can temporarily set the execution policy to Bypass or RemoteSigned. The Bypass policy will allow all scripts to run without any restrictions, while the RemoteSigned policy requires that scripts downloaded from the internet be signed by a trusted publisher.
+
+```PowerShell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+```
+
+- This command sets the execution policy for the current PowerShell session only.
+
+- Activate the Virtual Environment:
+
+- Now, try to activate the virtual environment again.
+
+
+```PowerShell
+.\venv\Scripts\Activate
+```
+
 4. Install Flask:
 
-`bash
+```bash
   pip install Flask
-`
+```
 
 5. Create a Flask application in a file named app.py:
 
@@ -202,6 +263,8 @@ def home():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 ```
+
+- Create a file name called `requirements.txt` and enter ```Flask==2.0.2```
 
 6. Test the application locally:
 
@@ -261,12 +324,36 @@ Install Jenkins from ```https://www.jenkins.io/doc/book/installing/windows/``` o
 - In the "Source Code Management" section, select Git and enter your repository URL:
 
 ```bash
-https://github.com/yourusername/python-docker-jenkins.git
+https://github.com/Pranith1Kumar/pydojen.git
 ```
-replace yourusername with your user name of GitHub.
+
+# Setting up GitHub Webhook
+1. To set up the webhook on GitHub, follow these steps:
+
+2. Navigate to your GitHub repository:
+
+3. Go to your repository on GitHub.
+4. Go to Settings > Webhooks:
+
+5. Click on "Settings" in the repository menu.
+6. Click on "Webhooks" in the left-hand menu.
+- Add a new webhook:
+
+7. Click the "Add webhook" button.
+- In the "Payload URL" field, enter the URL of your Jenkins server followed by /github-webhook/. For example, http://your-jenkins-server/github-webhook/.
+- Set the "Content type" to application/json.
+- Select "Just the push event".
+- Click "Add webhook".
+
+
+Replace yourusername with your user name of GitHub.
 In the "Build Triggers" section, set up a trigger to poll the repository or configure webhooks.
-- Add a webhook
-- 
+
+- Source Code Management:
+- Repository URL: ```https://github.com/Pranith1Kumar/pydojen.git```
+- Build Triggers:
+
+- GitHub hook trigger for `GITScm polling`
 
 
 - In the "Build" section, add a build step to execute shell commands. Use the following commands to build and run the Docker container:
@@ -286,12 +373,62 @@ docker run -d -p 5000:5000 python-docker-jenkins
 
 bash
 ```
-git remote add origin https://github.com/yourusername/python-docker-jenkins.git
+git remote add origin https://github.com/Pranith1Kumar/pydojen.git
 git add .
 git commit -m "Initial commit"
 git push -u origin master
 ```
 
+
+
+## Jenkins plays a crucial role in automating the Continuous Integration (CI) and Continuous Deployment (CD) processes for your project. Here's an explanation of Jenkins' role in this setup:
+
+1. Role of Jenkins:
+# Continuous Integration (CI):
+
+Automating Builds: Jenkins automates the process of building your application. When you push changes to your GitHub repository, Jenkins can automatically detect these changes and trigger a new build. This ensures that your application is always up-to-date and that any errors introduced by new code are detected early.
+Running Tests: Jenkins can run automated tests as part of the build process. This helps to ensure that your code changes do not introduce new bugs or break existing functionality.
+
+# Continuous Deployment (CD):
+
+Deploying Applications: Jenkins can automate the deployment of your application to different environments (e.g., development, staging, production). In this project, Jenkins will build a Docker image of your Python application and run the Docker container, ensuring that your application is deployed consistently and reliably.
+Pipeline Management: Jenkins allows you to define and manage complex deployment pipelines. You can specify multiple stages (e.g., build, test, deploy) and configure them to run sequentially or in parallel.
+Integration with Version Control:
+
+# Source Code Management: By integrating with GitHub, Jenkins can automatically fetch the latest code from your repository. This integration ensures that Jenkins always has access to the most recent version of your codebase.
+
+# Build Triggers:
+
+GitHub Hook Trigger: By enabling the "GitHub hook trigger for GITScm polling," you allow Jenkins to listen for webhooks from GitHub. This means that whenever you push changes to your repository, GitHub will notify Jenkins, and Jenkins will trigger a new build. This setup ensures that your CI/CD pipeline is automatically started whenever changes are made to the codebase.
+
+
+
+
+
+
+
+Work Flow:
+
++----------------------+    Push Changes    +-------------------------+
+| Developer Workstation|------------------->|       GitHub             |
+|  - Git               |                    |  - Repository            |
+|  - Docker            |                    |  - Webhooks              |
++----------------------+                    +-------------------------+
+                                                |  |
+                                                |  |
+                                                V  V
+                                          +-----------------+
+                                          |    Jenkins      |
+                                          |  - CI/CD Pipeline|
+                                          |  - Docker        |
+                                          +-----------------+
+                                                |
+                                                |
+                                                V
+                                         +------------------+
+                                         | Deployment Server|
+                                         |  - Docker        |
+                                         +------------------+
 ## You have successfully:
 
 - Built a Python web application using Flask.
