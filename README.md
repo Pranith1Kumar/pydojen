@@ -393,7 +393,7 @@ git push -u origin master
 
 
 
-Work Flow:
+``` Work Flow:
 
 +----------------------+    Push Changes    +-------------------------+
 | Developer Workstation|------------------->|       GitHub             |
@@ -416,7 +416,7 @@ Work Flow:
                                          |  - Docker        |
                                          +------------------+
  
-
+```
 
 
 Jenkins plays a crucial role in automating the Continuous Integration (CI) and Continuous Deployment (CD) processes for your project. Here's an explanation of Jenkins' role in this setup:
